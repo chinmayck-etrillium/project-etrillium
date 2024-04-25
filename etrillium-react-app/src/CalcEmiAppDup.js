@@ -8,9 +8,10 @@ function CalcEmiAppDup() {
   const [monthlyEmi, setMonthlyEmi] = useState();
 
   const calculateEmiHealth = () => {
-    const emiRatio = (monthlyEmi / monthlyIncome) * 100;
-    if (monthlyEmi == null || monthlyIncome == null)
+    if (!monthlyIncome || !monthlyEmi)
       return "Enter Monthly Income And Total Monthly EMIs !";
+
+    const emiRatio = (monthlyEmi / monthlyIncome) * 100;
     if (emiRatio < 30) return "Good";
     if (emiRatio <= 40) return "Needs Improvement";
     return "Bad";
